@@ -8,8 +8,5 @@ public class App {
 
         hiloAgrega.start();
         hiloLee.start();
-
-        hiloAgrega.join();
-        hiloLee.join();
     }
 }
