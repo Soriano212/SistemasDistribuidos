@@ -8,22 +8,24 @@ public class HiloAgrega extends Thread{
         this.lista = lista;
     }
     public void run() {
-        synchronized (lista) {
-            for (int i=0; i<50; i++){
+
+            for (int i=0; i<25; i++){
                 int valor = (int)(Math.random()*500);
                 this.lista.add(valor);
                 System.out.println(getName() + " Dato: "+valor);
-            }
-            
-            lista.notify();      
 
-            try {
-                sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+                if (lista.size() % 5 == 0){
+                    synchronized (lista) {
+                        lista.notify();
+                    }
+                }
 
-            
-        }
+                try {
+                    sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        
     }
 }
