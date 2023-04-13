@@ -3,10 +3,10 @@ import zmq
 context = zmq.Context()
 
 receiver = context.socket(zmq.PULL)
-receiver.bind("tcp://:5557")
+receiver.bind("tcp://localhost:5557")
 
 sender = context.socket(zmq.PUSH)
-sender.bind("tcp://:5558")
+sender.bind("tcp://localhost:5558")
 
 try:
     while True:
