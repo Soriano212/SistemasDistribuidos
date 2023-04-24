@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      h1 {
+        text-align: center;
+        color: white;
+        background-color: black;
+        font-weight: bold;
+      }
+      body > div > div {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        border-bottom: 1px solid rgb(215, 209, 209);
+      }
+      body > div > div p:first-child {
+        width: 200px;
+        text-align: center;
+      }
+
+      body > div > div p:last-child {
+        margin-left: 20px;
+        background-color: rgb(210, 202, 202);
+        color: black;
+        width: 100vw;
+        height: 40px;
+      }
+      #container{
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
+    <title>Websockets</title>
+  </head>
+  <body>
+    <h1>Websockets</h1>
+    <div id="container">
+      <!--Contenido de los mensajes enviados por el servidor-->
+      
+    </div>
+    <script>
+      var socket = new WebSocket("ws:localhost:1234");
+      socket.onopen = function (event) {
+        alert("Conexión abierta");
+        socket.send('Hola servidor!');
+      };
+      socket.onclose = function (event) {
+        alert("Conexión cerrada");
+      };
+      socket.onmessage = function (event) {
+        const contenedor=document.getElementById("container");
+        var msg=JSON.parse(event.data);
+        contenedor.innerHTML+=`<div> <p> Mensaje del Servidor: <br /> ${msg[1]}</p> <p>${msg[0]}</p></div>`;
+      };
+    </script>
+  </body>
+</html>
