@@ -15,7 +15,8 @@ sender.conect(sen)
 
 try:
     while True:
-        s = rerec = "tcp://" + HOST + ":" + PORT1rec = "tcp://" + HOST + ":" + PORT1ceiver.recv()
+        s = rerec = "tcp://" + HOST + ":" + PORT1
+        rec = "tcp://" + HOST + ":" + PORT1ceiver.recv()
         sender.send(s.upper())
 
 except KeyboardInterrupt:
