@@ -1,3 +1,5 @@
+import socket
+
 HOST = '10.10.10.100'
 PORT = 8080
 
