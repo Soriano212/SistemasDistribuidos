@@ -20,13 +20,11 @@ try:
     persona = Pyro4.Proxy(uri)
 
     # Crea un objeto Persona con nombre "Alberto" y cédula "0150440378"
-    nombre = "Alberto"
-    cedula = "1234567890"
-    mi_persona = persona.__class__(nombre, cedula)
+    mi_persona = persona.crear_persona("Alberto", "1234567890")
 
     # Ejecuta los métodos del objeto remoto
     print(mi_persona.to_string())
-    print("La cédula es válida" if mi_persona.verificar_cedula() else "La cédula no es válida")
+    print(mi_persona.verificar_cedula())
 
 except KeyboardInterrupt as e:
     print("Error al recibir o conectar al URI:", e)

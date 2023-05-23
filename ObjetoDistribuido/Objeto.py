@@ -89,4 +89,3 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("El programa se cerró.")
 
-
